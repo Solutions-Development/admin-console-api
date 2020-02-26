@@ -1,0 +1,32 @@
+<body>
+    <select id="sedes">
+    </select>
+</body>
+<script>
+async function search() {
+let select = document.querySelector("#inputState")
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        const parsed = JSON.parse(xhttp.response);
+        var sedes = [];
+        for (var i = 0; i < parsed.length; i++){
+            sedes.push(parsed[i].nombre)
+            console.log(sedes);
+      }
+      for (let elt of sedes){
+          let option = document.createElement("option");
+          option.text = elt;
+          option.value = elt;
+          select.appendChild(option);
+      }
+    }
+  }
+xhttp.open("GET", "http://localhost/sede", true);
+xhttp.send();
+}
+search()
+/*
+
+*/
+</script>
