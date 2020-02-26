@@ -16,8 +16,6 @@ var corsOptionsDelegate = function (req: any, callback: any) {
   callback(null, corsOptions) 
 }
 
-
-
 router.post('/mail', _.mail);
 router.get('/', cors(corsOptionsDelegate), _.root);
 router.get('/events', cors(corsOptionsDelegate), _.events);
