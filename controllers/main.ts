@@ -30,7 +30,7 @@ export async function events(req: any, reply: any) {
         place: actividades[i].place,
         speaker: {
           speaker_name: actividades[i].speaker_name,
-          photo: "val[0].perfil",
+          photo: val[i].perfil,
           nationality: "none",
           cv: "none"
         }
