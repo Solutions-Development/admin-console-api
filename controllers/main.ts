@@ -1,4 +1,5 @@
 import { REPL_MODE_SLOPPY } from "repl";
+import { ABSTRACT } from "sequelize/types";
 
 const models = require("../models");
 const Actividad = models.actividad;
@@ -182,7 +183,7 @@ export async function eventsByEvent(req: any, reply : any) {
         place: val[i].place,
         speaker: {
           speaker_name: val[i].speaker_name,
-          photo: "val[0].perfil",
+          photo: val[i].perfil,
           nationality: "none",
           cv: "none"
         }
@@ -503,3 +504,4 @@ export async function photosPoint(req: any, reply: any) {
     reply.send(response);
   })
 }
+
