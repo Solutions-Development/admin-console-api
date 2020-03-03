@@ -30,7 +30,7 @@ export async function events(req: any, reply: any) {
         place: actividades[i].place,
         speaker: {
           speaker_name: actividades[i].speaker_name,
-          photo: val[i].perfil,
+          photo: actividades[i].perfil,
           nationality: "none",
           cv: "none"
         }
@@ -68,6 +68,7 @@ export async function byDay(req: any, reply: any) {
     reply.send({ event: arr })
   })
 }
+
  // end
  /**
   * 
