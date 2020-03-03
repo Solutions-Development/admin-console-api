@@ -177,6 +177,11 @@ export async function eventsByEvent(req: any, reply : any) {
             eventoAsignado: req.params.event
         }
        });
+       const _val = await Conferencista.findAll({
+         where: {
+           nombre: val[i].speaker_name
+         }
+       });
       var data = {
         name: val[i].name,
         date: val[i].date,
@@ -184,7 +189,7 @@ export async function eventsByEvent(req: any, reply : any) {
         place: val[i].place,
         speaker: {
           speaker_name: val[i].speaker_name,
-          photo: val[i].perfil,
+          photo: _val[i].perfil,
           nationality: "none",
           cv: "none"
         }
