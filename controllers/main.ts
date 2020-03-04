@@ -514,9 +514,15 @@ export async function ireq<T>(req: any, reply: any) {
 
 export async function agenda<T>(req: any, reply: any) {
   const username = req.params.username;
-  const data = {
+  const data = [
+    {
     name: username,
     title: `By: ${username}`
-  }
-  await reply.send([data]);
+    },
+    {
+    name: 'gsoto',
+    title: `By: gsoto`
+    }
+]
+  await reply.send(data);
 }
