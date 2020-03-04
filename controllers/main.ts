@@ -40,13 +40,11 @@ export async function events(req: any, reply: any) {
     reply.send([{ event: arr}])
   })
 }
-
 /**
  * @byDay
  * @param req 
  * @param reply 
  */
-
 export async function byDay(req: any, reply: any) {
   _Evento.findAll().then(function(actividades: any) {
     var arr = [];
@@ -177,11 +175,6 @@ export async function eventsByEvent(req: any, reply : any) {
             eventoAsignado: req.params.event
         }
        });
-       const _val = await Conferencista.findAll({
-         where: {
-           nombre: val[i].speaker_name
-         }
-       });
       var data = {
         name: val[i].name,
         date: val[i].date,
@@ -189,14 +182,14 @@ export async function eventsByEvent(req: any, reply : any) {
         place: val[i].place,
         speaker: {
           speaker_name: val[i].speaker_name,
-          photo: _val[i].perfil,
+          photo: val[i].perfil,
           nationality: "none",
           cv: "none"
         }
       }
       arr.push(data)
     }
-    reply.send([{ event: arr}])
+    reply.send([{ event: arr}]);
   }) 
 }
 export async function sendBanner(req: any, reply: any) {
@@ -229,7 +222,6 @@ export async function links(req: any, reply: any) {
  reply.send([links]);
 }
 export async function root(req: any, reply: any) {
-  //reply.status(200).send({ message: "Admin Console API" });
   reply.status(200)
        .send({
          message: "Travel Solutions - Admin Console API"
@@ -268,6 +260,7 @@ export async function actividad(req: any , res: any) {
         createdAt: "Today",
         updatedAt: "Today"
       };
+
       const _evento = {
         id: "0",
         name: rq.nombre_actividad,
@@ -275,14 +268,14 @@ export async function actividad(req: any , res: any) {
         hour: rq.duracion,
         place: rq.locacion,
         speaker_name: rq.representante,
-        eventoAsignado: rq.eventoAsignado
+        eventoAsignado: rq.eventoAsignado,
+        profile: ''
       }
      await  Actividad.create(actividad);
       await _Evento.create(_evento).then(async (data: any) => {
         console.log(data);
         res.send("OK")
       })
-     
 }
 export async function conferencistas(req: any , res: any) {
 
@@ -366,7 +359,6 @@ export async function sede(req: any , res: any) {
     });
 }
 export async function evento(req: any , res: any) {
-
   const rq = req.body;
   const evento = {
     id: "0",
@@ -382,7 +374,7 @@ export async function evento(req: any , res: any) {
     banner: rq.banner,
     iconografia: rq.iconografia,
     mapa: rq.mapa,
-  };
+  }
   await Evento.create(evento).then(res.status(200).end());
 }
 export async function getActividad(req: any, reply: any) {
@@ -391,7 +383,7 @@ export async function getActividad(req: any, reply: any) {
   const limit = Number(count);
   const offset = Number(countTwo);
   Actividad.findAll({offset:offset, limit:limit }).then(function(actividades: any) {
-    // projects will be an array of all Project instances
+    // projects will be an array of all Actividades instances
     reply.send(actividades)
   })
 }
@@ -402,13 +394,13 @@ export async function index(req: any, reply: any) {
 }
 export async function getConferencistas(req: any, reply: any) {
   Conferencista.findAll().then(function(conferencistas: any) {
-    // projects will be an array of all Project instances
+    // projects will be an array of all Conferencistas instances
     reply.send(conferencistas)
   })
 }
 export async function getSede(req: any, reply: any) {
   Sede.findAll().then(function(sedes: any) {
-    // projects will be an array of all Project instances
+    // projects will be an array of all Sedes instances
     reply.send(sedes)
   })
 }
@@ -440,7 +432,7 @@ export async function getEventos(req: any, reply: any) {
   * @Private property @Eventos
   */
   Evento.findAll({ offset: offset, limit: limit }).then(function(eventos: any) {
-    // projects will be an array of all Project instances
+    // projects will be an array of all Eventos instances
     reply.send(eventos);
   })
 }
@@ -458,7 +450,7 @@ export async function photos(req: any, reply: any) {
   reply.send([data]);
   */
  Photos.findAll().then(function(eventos: any) {
-  // projects will be an array of all Project instances
+  // projects will be an array of all Photos instances
   reply.send(eventos);
  })
 }
@@ -486,7 +478,7 @@ export async function auth(req: any, reply: any) {
 };
 export async function tipoActividad<T>(req: any, reply: any) {
   TipoActividad.findAll().then(function(eventos: any) {
-    // projects will be an array of all Project instances
+    // projects will be an array of all Actividades instances
     reply.send(eventos);
    });
 }
@@ -510,4 +502,21 @@ export async function photosPoint(req: any, reply: any) {
     reply.send(response);
   })
 }
+const os = require("os");
 
+export async function ireq<T>(req: any, reply: any) {
+  reply.status(200)
+       .send({
+         message: "STATUS 200 OK",
+         hostname: os.hostname
+       })
+}
+
+export async function agenda<T>(req: any, reply: any) {
+  const username = req.params.username;
+  const data = {
+    name: username,
+    title: `By: ${username}`
+  }
+  await reply.send([data]);
+}
