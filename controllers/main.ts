@@ -10,6 +10,7 @@ const Evento = models.evento;
 const _Evento = models._evento;
 const Photos = models.photos;
 const TipoActividad = models.tipoActividad;
+const Agenda = models.agenda;
 
 const request = require("request-promise-native");
 const path = require("path");
@@ -508,10 +509,12 @@ export async function photosPoint(req: any, reply: any) {
 
 export async function setAgenda<T>(req: any, reply: any) {
   const body = req.body;
-  reply.send({
-    arg1: body.code,
-    arg2: body.event
-  });
+  const data = {
+    id: '0',
+    code: body.code,
+    name: body.name
+  };
+  await Agenda.create(data).then(reply.status(200).end());
 }
 
 export async function fetchAgenda<T>(req: any, reply: any) {
