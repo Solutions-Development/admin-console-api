@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	.level {
+		font-size:15px;
+	}
+	</style>
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="images/img-01.png" alt="IMG">
+				</div>
+
+				<form class="login100-form validate-form" action="http://api.solutions.com.do/auth" method="POST">
+					<ul class="nav nav-pills">
+						<li class="active" id="personal"><a href="#" class="level" onclick="personal()">Personal</a></li>
+						<li id="empresarial"><a href="#" class="level" onclick="empresarial()">Empresarial</a></li>
+						<li id="agente"><a href="#productores" class="level" onclick="agente()">Productores</a></li>
+					  </ul>
+					  <br><br>
+					  
+
+					  <script>
+					 function personal(){
+						 document.getElementById("personal").className = "active";
+						 document.getElementById("empresarial").className = "";
+						 document.getElementById("agente").className = "";
+						 document.getElementById("empresa").style.visibility = "hidden";
+						 const field = document.getElementById("empresa_field").value = "usuario_empresa_id";
+					 } 
+					 function empresarial(){
+						 document.getElementById("personal").className = "";
+						 document.getElementById("empresarial").className = "active";
+						 document.getElementById("agente").className = "";
+						 document.getElementById("empresa").style.visibility = "visible";
+						 const field = document.getElementById("empresa_field").value = "";
+					 } 
+					 function agente(){
+						 document.getElementById("personal").className = "";
+						 document.getElementById("empresarial").className = "";
+						 document.getElementById("agente").className = "active";
+						 document.getElementById("empresa").style.visibility = "hidden";
+						 const field = document.getElementById("empresa_field").value = "usuario_empresa_id";
+					 } 
+					  </script>
+					<span class="login100-form-title">
+						Acceso <br> Travel Solutions &copy;
+					</span>
+					<div class="wrap-input100 validate-input" style="visibility: hidden" id="empresa" >
+						<input class="input100" type="text" value="usuario_empresa_id" name="empresa" id="empresa_field" placeholder="Nombre de Empresa">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="username" placeholder="Usuario">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="password" name="password" placeholder="Contraseña">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						
+						<button class="login100-form-btn" type="submit">
+							Login
+						</button>
+					</div>
+					<div class="text-center p-t-136" style="margin-top: -100px">
+						<a class="txt2" href="http://eventos.solutions.com.do/solicitud">
+						<span>Solicita tu acceso</span>
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+					<div class="text-center p-t-136" style="margin-top: -130px">
+						<a class="txt2" href="#" ">
+						<span>¿Olvidaste tu usuario o contraseña?</span>
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+<!-- Start of  Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=244200ea-12f6-4e10-ae99-c17697c64b3a"> </script>
+<!-- End of  Zendesk Widget script -->
+</body>
+</html>

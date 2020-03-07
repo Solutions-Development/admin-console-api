@@ -465,7 +465,7 @@ export async function auth(req: any, reply: any) {
             password: password,
         }
     });
-   
+   try {
    if(auth[0].password === password) {
      if (empresa === "MariJoe") {
       reply.redirect(`http://eventos.solutions.com.do/marijoe/${username}`);
@@ -473,8 +473,11 @@ export async function auth(req: any, reply: any) {
       reply.redirect(`http://eventos.solutions.com.do/dashboard/${username}`);
     }
    } else {
-     reply.redirect("http://eventos.solutions.com.do");
+     reply.redirect("http://eventos.solutions.com.do/error");
    }
+  } catch (e) {
+    reply.redirect('http://eventos.solutions.com.do/error');
+  }
 };
 export async function tipoActividad<T>(req: any, reply: any) {
   TipoActividad.findAll().then(function(eventos: any) {
@@ -525,4 +528,8 @@ export async function agenda<T>(req: any, reply: any) {
     }
 ]
   await reply.send(data);
+}
+
+export async function saveEvent<T>(req: any, reply: any) {
+
 }
