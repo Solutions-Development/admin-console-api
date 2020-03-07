@@ -505,17 +505,16 @@ export async function photosPoint(req: any, reply: any) {
     reply.send(response);
   })
 }
-const os = require("os");
 
-export async function ireq<T>(req: any, reply: any) {
-  reply.status(200)
-       .send({
-         message: "STATUS 200 OK",
-         hostname: os.hostname
-       })
+export async function setAgenda<T>(req: any, reply: any) {
+  const body = req.body;
+  reply.send({
+    arg1: body.code,
+    arg2: body.event
+  });
 }
 
-export async function agenda<T>(req: any, reply: any) {
+export async function fetchAgenda<T>(req: any, reply: any) {
   const username = req.params.username;
   const data = [
     {
@@ -528,8 +527,4 @@ export async function agenda<T>(req: any, reply: any) {
     }
 ]
   await reply.send(data);
-}
-
-export async function saveEvent<T>(req: any, reply: any) {
-
 }
