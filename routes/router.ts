@@ -47,5 +47,5 @@ router.get('/tipoActividad', cors(corsOptionsDelegate), _.tipoActividad);
 router.post('/tipoActividad', cors(corsOptionsDelegate), _.createTipoActividad);
 router.get('/clear/conferencistas', _.clearConferencistas);
 router.get('/clear/actividades', cors(corsOptionsDelegate), _.clearActividades);
-router.get('/agenda/:username', cors(corsOptionsDelegate), _.agenda);
+router.get('/agenda/:username', cors(corsOptionsDelegate), _.fetchAgenda);
 router.get('/cdn/:banner', cdn.banner);
